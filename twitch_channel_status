@@ -1,0 +1,37 @@
+#!/usr/bin/env python3
+
+from sys import argv, stdout, stderr, exit
+
+from twitch.constants import Twitch
+from util.contents import Contents
+
+
+def fetch_stream(channel):
+    response = Contents.json(
+        Twitch.stream_link.format(channel),
+        headers=Twitch.client_id_header
+    )
+    if response['stream'] is None:
+        return None
+    return response['stream']
+
+
+def write_status(channel_name):
+    stream = fetch_stream(channel_name)
+    if stream is None:
+        stderr.write('Seems like the channel is offline.\n')
+        exit(1)
+    if stream['channel'] is None:
+        return
+    stream_status = stream['channel']['status']
+    if stream_status:
+        stdout.write(stream_status + '\n')
+
+
+if __name__ == '__main__':
+    if len(argv) != 2:
+        stderr.write('You must provide a channel name!\n')
+        exit(1)
+
+    _channel_name = argv[1]
+    write_status(_channel_name)
