@@ -5,11 +5,11 @@ import uuid
 from collections import deque
 from time import sleep
 
-from twitch.constants import Twitch
-from twitch.playlist import Playlist
-from util.contents import Contents
-from util.log import Log
-from util.stopwatch import Stopwatch
+from twitch_dl.twitch.constants import Twitch
+from twitch_dl.twitch.playlist import Playlist
+from twitch_dl.util.contents import Contents
+from twitch_dl.util.log import Log
+from twitch_dl.util.stopwatch import Stopwatch
 
 
 class Recorder:
@@ -61,7 +61,7 @@ class Recorder:
         return response['stream']['channel']['status']
 
     @staticmethod
-    def __next_vacant(file_name: str):
+    def __next_vacant(file_name):
         new_name = file_name
         for i in itertools.count(1):
             if not os.path.isfile(new_name):

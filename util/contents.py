@@ -3,7 +3,7 @@ from collections import namedtuple
 import requests
 from requests import codes as status
 
-from util.log import Log
+from twitch_dl.util.log import Log
 
 Content = namedtuple('Content', 'decode')
 

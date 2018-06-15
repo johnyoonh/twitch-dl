@@ -1,11 +1,18 @@
-from twitch.constants import Twitch
-from util.contents import Contents
+from twitch_dl.twitch.constants import Twitch
+from twitch_dl.util.contents import Contents
 
 
 class Vod:
     @staticmethod
-    def title(vod_id):
+    def meta(vod_id):
         return Contents.json(
             'https://api.twitch.tv/kraken/videos/v{}'.format(vod_id),
             headers=Twitch.client_id_header
-        )['title']
+        )
+
+def main():
+    print Vod.meta("243609286")
+
+
+if __name__ == '__main__':
+    main()

@@ -1,8 +1,8 @@
 import json
 from time import time
 
-from twitch.constants import Twitch
-from util.contents import Contents
+from twitch_dl.twitch.constants import Twitch
+from twitch_dl.util.contents import Contents
 
 
 class Token:

@@ -1,9 +1,9 @@
 import m3u8
 from m3u8 import M3U8
 
-from twitch.constants import Twitch
-from twitch.token import Token
-from util.contents import Contents
+from twitch_dl.twitch.constants import Twitch
+from twitch_dl.twitch.token import Token
+from twitch_dl.util.contents import Contents
 
 
 class Playlist:
